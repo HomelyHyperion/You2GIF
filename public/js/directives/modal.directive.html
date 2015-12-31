@@ -1,0 +1,49 @@
+<!-- Modal -->
+<div class="modal fade" id="modal" role="dialog">
+	<div class="modal-dialog">
+
+	  <!-- Modal content-->
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		  <h4 class="modal-title">Convert Video to GIF</h4>
+		</div>
+		<div class="modal-body">
+			<!-- Video mode -->
+			<div ng-hide="vm.imageUrl">
+				<div class="video-wrapper col-sm-12">
+					<div id="player"></div>
+				</div>
+				<form class="row small">
+					<div class="form-group col-sm-4">
+						<label for="input-duration">Duration (seconds)</label>
+						<select id="input-duration" class="form-control input-sm" ng-model="vm.duration" ng-change="vm.resetVideo()">
+							<option ng-repeat="value in vm.range track by $index" value="{{$index + 1}}">{{$index + 1}}</option>
+						</select>
+					</div>
+					<div class="form-group col-sm-4">
+						<label for="input-startTime">Start Time (seconds)</label>
+						<input id="input-startTime" type="number" class="form-control input-sm" ng-readonly="true" ng-model="vm.startTime" />
+					</div>
+					<div class="form-group col-sm-4">
+						<label for="input-currentTime">Current Time (seconds)</label>
+						<input id="input-currentTime" type="number" class="form-control input-sm" ng-readonly="true" ng-model="vm.currentTime" />
+					</div>
+				</form>	
+			</div>
+			<!-- GIF mode -->	
+			<div class="gif-wrapper text-center" ng-show="vm.imageUrl">
+				<img ng-src="{{vm.imageUrl}}" alt="" />
+				<loader loading="vm.loading"></loader>	
+			</div>
+	    </div>
+	    <div class="modal-footer">
+	    	<!-- Video mode -->
+	    	<button type="button" class="btn btn-red" ng-click="vm.convertVideoToGIF()" ng-hide="vm.imageUrl">Convert</button>
+	    	<!-- GIF mode -->
+	    	<a ng-href="{{vm.imageUrl}}&amp;download=1" class="btn btn-red" ng-show="vm.imageUrl"><span class="glyphicon glyphicon-download-alt"></span> Download</a>
+	    </div>
+	  </div>
+	  
+	</div>
+</div>
