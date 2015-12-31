@@ -148,7 +148,7 @@ body {
 .modal-body .gif-wrapper {
 	height: 200px;
 }
-	.modal-body .gif-wrapper img {
+	.modal-body .gif-wrapper .image-wrapper {
 		position: relative;
 		z-index: 2;
 		height: 200px;
